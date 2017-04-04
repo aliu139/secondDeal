@@ -1,5 +1,4 @@
 var isCompassAttached = false;
-var tableId = 0;
 var compassDiff = 0;
 
 window.main = new Vue({
@@ -15,20 +14,18 @@ window.main = new Vue({
             document.getElementById("start").remove();
             document.getElementById(isClient ? "table" : "deck").remove();
             $(isClient ? "#deck" : "#table").show();
-
-            let tableId = this.requestedSID;
             if (isClient) {
                 // init a deck of 10 cards
                 init(10);
 
                 // register phone connection
-                socket.emit('phone-connect', tableId);
+                socket.emit('phone-connect', this.requestedSID);
                 this.clientLoop();
             }
             else {
-                socket.emit('table-connect', tableId);
+                socket.emit('table-connect', this.requestedSID);
                 // and the URL
-                document.getElementById("url").innerHTML = tableId;
+                document.getElementById("url").innerHTML = this.requestedSID;
                 this.tableLoop();
             }
         },
@@ -51,7 +48,7 @@ window.main = new Vue({
 
             // ... and update phone direction each 500 ms
             setInterval(function () {
-                socket.emit("phone-move", { tableId: tableId, angle: getCompassDirection() });
+                socket.emit("phone-move", { tableId: this.requestedSID, angle: getCompassDirection() });
             }, 500);
         },
         tableLoop: function () {

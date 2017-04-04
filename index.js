@@ -32,14 +32,17 @@ let tableSockets = []
 io.on('connection', function(socket){
     // receives a connect message from the card table
     socket.on("table-connect", function (tableId) {
+        console.log("tableID " + tableId + " connected");
         tableSockets[tableId] = socket;
         socket.tableId = tableId;
     });
 
     // receives a connect message from a phone
     socket.on("phone-connect", function (tableId) {
+        console.log("phone-connect to " + tableId)
         var tableSocket = tableSockets[tableId];
         if (tableSocket) {
+            console.log("attempting to connect to " + tableId);
             tableSocket.emit('phone-connect');
         }
     });
@@ -54,6 +57,8 @@ io.on('connection', function(socket){
 
     // receives a throw card message from a phone
     socket.on('phone-throw-card', function (data) {
+        console.log("card thrown")
+        console.log(data)
         var tableSocket = tableSockets[data.tableId];
         if (tableSocket) {
             tableSocket.emit('phone-throw-card', data);

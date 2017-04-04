@@ -29,7 +29,7 @@ function removeCard(id, strength) {
         document.getElementById(id).parentElement.remove();
         addCard();
         var sentJSON = { 
-            tableId: tableId, 
+            tableId: window.main.$data.requestedSID, 
             isCard: card.isCard, 
             suit: card.suit, 
             rank: card.rank, 

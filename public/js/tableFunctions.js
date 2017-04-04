@@ -52,5 +52,10 @@ function throwCard(card) {
 
 function phoneConnected() {
     // remove banner when a phone connects
-    document.getElementById("waiting-for-device").remove();
+    console.log("phoneConnected")
+
+    let el = document.getElementById("waiting-for-device")
+    if(el){
+        el.remove();
+    }
 }
