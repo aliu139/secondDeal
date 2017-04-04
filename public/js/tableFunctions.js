@@ -1,5 +1,28 @@
 var idCounter = 0;
 
+function addCardToTable(id, angle, suit, rank) {
+    // inject card html to the page body
+    document.body.innerHTML +=
+        `<div class="path" style="transform: rotate(${angle}deg)">
+            <div id="${id}" class="card cardT ${suit} rank${rank}">
+                <div class="face"/>
+            </div>
+        </div>`;
+}
+
+function addImageToTable(id, custImg, angle) {
+    // var img = new Image();
+    // img.src = custImg;
+    
+    document.body.innerHTML +=
+        `<div class="path" style="transform: rotate(${angle}deg)">
+            <div id="${id}" class="card cardT hearts rank2">
+                <img width="50" height="50" src="` + custImg+`" >
+            </div>
+        </div>`;
+
+}
+
 function phoneMoved(angle) {
     // change angle of the phone direction indicator
     var path = document.querySelector("#phone-move.path");
@@ -9,7 +32,12 @@ function phoneMoved(angle) {
 function throwCard(card) {
     // add card to table
     var cardid = "card" + idCounter++;
-    addCardToTable(cardid, card.angle, card.suit, card.rank);    
+    if (card.isCard) {
+        addCardToTable(cardid, card.angle, card.suit, card.rank);
+    }
+    else {
+        addImageToTable(cardid, card.custImg, card.angle);
+    }
 
     // little hack to trigger the animation
     setTimeout(function () {

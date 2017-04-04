@@ -1,39 +1,44 @@
-// AUX METHODS
-
-function addCardToTable(id, angle, suit, rank) {
-    // inject card html to the page body
-    document.body.innerHTML += 
-        `<div class="path" style="transform: rotate(${angle}deg)">
-            <div id="${id}" class="card cardT ${suit} rank${rank}">
-                <div class="face"/>
-            </div>
-        </div>`;
-}
-
-function qrCodeGenerator(value, elementid) {
-    // generates a qrcode based on a value inside an html element
-    var qr = qrcode(4, 'L');
-    qr.addData(value);
-    qr.make();
-    document.getElementById(elementid).innerHTML = qr.createImgTag(4,16);
-}
-
-function generateID(){
-    // generate random 5 character id for the session
-    var d = new Date().getTime();
-    if(window.performance && typeof window.performance.now === "function"){
-        d += performance.now();
+function picChange(evt) {
+    var fileInput = evt.target.files;
+    if (fileInput.length > 0) {
+        var windowURL = window.URL || window.webkitURL;
+        var picURL = windowURL.createObjectURL(fileInput[0]);
+        drawCard(picURL)
     }
-    var uuid = 'xxxxx'.replace(/[xy]/g, function(c) {
-        var r = (d + Math.random()*16)%16 | 0;
-        d = Math.floor(d/16);
-        return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+}
+
+function toDataUrl(url) {
+    return new Promise(function (resolve, reject) {
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function () {
+            var reader = new FileReader();
+            reader.onloadend = function () {
+                resolve(reader.result);
+            }
+            reader.readAsDataURL(xhr.response);
+        };
+        xhr.open('GET', url);
+        xhr.responseType = 'blob';
+        xhr.send();
     });
-    return uuid;
+}
+
+function drawCard(url) {
+    var item = '<div class="item"><div id="cus1" class="card cardH custom"><div class="face" style="background-image: url(' + url + ');"></div></div></div>'
+    $("#touchHandler").prepend(item);
+    toDataUrl(url).then(function (res) {
+        cards.unshift({
+            "id": "cus1",
+            "isCard": false,
+            "custImg": res,
+            "suit": "hearts",
+            "rank": "2"
+        });
+    })
 }
 
 function init(n) {
-    for(var i = 0; i < n; i++) {
+    for (var i = 0; i < n; i++) {
         addCard();
     }
 }
@@ -45,10 +50,10 @@ function getRandomNumber(min, max) {
 function getCompassDirection() {
     var val = ((compassDirection - compassDiff) + 360) % 360;
     var direction = 0;
-    if(val >= 0 && val < 180) {
-        return Math.min(val, 90);    
+    if (val >= 0 && val < 180) {
+        return Math.min(val, 90);
     } else {
-        return Math.max(val, 270);  
+        return Math.max(val, 270);
     }
 }
 

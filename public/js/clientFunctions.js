@@ -1,17 +1,18 @@
 var cards = [];
 var idCounter = 0;
-            
+
 function addCard() {
     // adds a new card to the end of the deck
     var randomCard = getRandomCard();
     var card = {
-      "id": "card" + idCounter ++,
-      "suit": randomCard.suit,
-      "rank": randomCard.rank
+        "id": "card" + idCounter++,
+        "isCard": true,
+        "suit": randomCard.suit,
+        "rank": randomCard.rank
     };
     cards.push(card);
-    
-    document.getElementById("touchHandler").innerHTML += 
+
+    document.getElementById("touchHandler").innerHTML +=
         `<div class="item">
             <div id="${card.id}" class="card cardH ${card.suit} rank${card.rank}">
                 <div class="face"/>
@@ -22,15 +23,17 @@ function addCard() {
 function removeCard(id, strength) {
     // animates a card leaving the deck
     // after 500 ms removes the element from the DOM and informs the table
-    if(cards.length === 0) {
+    if (cards.length === 0) {
         return;
     }
     var card = cards[0];
-    cards.splice(0,1);
-    setTimeout(function() {
+    cards.splice(0, 1);
+    setTimeout(function () {
         document.getElementById(id).parentElement.remove();
         addCard();
-        socket.emit('phone-throw-card', { tableId: tableId,  suit: card.suit, rank: card.rank, angle: getCompassDirection(), strength: strength });
+        var sentJSON = { tableId: tableId, isCard: card.isCard, suit: card.suit, rank: card.rank, angle: getCompassDirection(), strength: strength, custImg: card.custImg };
+        console.log(sentJSON)
+        socket.emit('phone-throw-card', sentJSON);
     }, 500);
 }
 
@@ -38,7 +41,7 @@ function removeCard(id, strength) {
 // SWIPE EVENTS
 
 function touchStart(x, y) {
-  // do nothing
+    // do nothing
 }
 
 function touchMove(evt, x, y, offsetX, offsetY) {
@@ -47,7 +50,7 @@ function touchMove(evt, x, y, offsetX, offsetY) {
 
 function touchEnd(x, y, offsetX, offsetY, timeTaken) {
     // 10 pixels swipe up = min threshold
-    if(-offsetY < 10) {
+    if (-offsetY < 10) {
         return;
     }
     // add class to animate
@@ -57,9 +60,9 @@ function touchEnd(x, y, offsetX, offsetY, timeTaken) {
 
     // calculate strength (2000+ pixels per second = 100% strength)
     var distanceY = -offsetY;
-    var pps = Math.trunc((distanceY*1.0) / (timeTaken/1000.0));
+    var pps = Math.trunc((distanceY * 1.0) / (timeTaken / 1000.0));
     var min = Math.min(2000, pps);
-    var percentage = Math.trunc(min/2000*100);
+    var percentage = Math.trunc(min / 2000 * 100);
 
     removeCard(card.id, percentage);
 }
@@ -67,8 +70,8 @@ function touchEnd(x, y, offsetX, offsetY, timeTaken) {
 // RANDOM CARDS
 
 function getRandomCard() {
-    return { 
-        suit: getRandomSuit(), 
+    return {
+        suit: getRandomSuit(),
         rank: getRandomNumber(1, 13)
     }
 }

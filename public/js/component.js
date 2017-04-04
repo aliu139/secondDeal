@@ -6,16 +6,18 @@ var compassDirection = 0;
 window.main = new Vue({
     el: '#main',
     data: {
-        client: null
+        client: null,
+        requestedSID: getRandomNumber(0, 10000)
     },
     methods: {
         setUser: function (isClient) {
             this.client = isClient;
 
             document.getElementById("start").remove();
+            console.log(this.requestedSID)
 
             if (isClient) {
-                let tableId = 0;
+                let tableId = this.requestedSID;
                 document.getElementById("table").remove();
                 $("#deck").show();
 
@@ -27,7 +29,7 @@ window.main = new Vue({
                 this.clientLoop();
             }
             else {
-                var tableId = 0;
+                var tableId = this.requestedSID;
                 document.getElementById("deck").remove();
                 $("#table").show();
 
