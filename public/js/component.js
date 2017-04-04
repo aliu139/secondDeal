@@ -17,6 +17,7 @@ window.main = new Vue({
             if (isClient) {
                 let tableId = 0;
                 document.getElementById("table").remove();
+                $("#deck").show();
 
                 // init a deck of 10 cards
                 init(10);
@@ -28,6 +29,8 @@ window.main = new Vue({
             else {
                 var tableId = 0;
                 document.getElementById("deck").remove();
+                $("#table").show();
+
                 socket.emit('table-connect', tableId);
                 // and the URL
                 document.getElementById("url").innerHTML = tableId;

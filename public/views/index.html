@@ -26,7 +26,7 @@
       <button type="button" class="btn btn-default" v-on:click="setUser(false)"> Server </button>
     </div>
 
-    <div id="deck" v-show="client != null && client">
+    <div id="deck" v-show="client != null && client" v-cloak>
       <div id="waiting-for-calibration" onclick="calibrate()">
         <div class="section">
           <span>Point the device 90° <br> to the table bottom</span>
@@ -38,7 +38,7 @@
       <div id="touchHandler"></div>
     </div>
 
-    <div id="table" v-show="client != null && !client">
+    <div id="table" v-show="client != null && !client" v-cloak>
       <!-- Pointer to indicate phone direction-->
       <div id="phone-move" class="path"></div>
       <!-- Waiting for phone to connect banner -->
