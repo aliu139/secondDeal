@@ -42,7 +42,12 @@ function throwCard(card) {
         cardElement.className += " thrown";
         // set thrown strength
         cardElement.style = "transform: translateY(" + (100 - card.strength) + "vh) scale(1)";
+        allowMove(cardid)
     }, 100);
+
+    setTimeout(function(){
+        $("#"+cardid).removeClass("thrown");
+    }, 1500);
 }
 
 function phoneConnected() {
