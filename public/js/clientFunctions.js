@@ -1,7 +1,6 @@
 var cards = [];
 var idCounter = 0;
             
-
 function addCard() {
     // adds a new card to the end of the deck
     var randomCard = getRandomCard();
@@ -14,7 +13,7 @@ function addCard() {
     
     document.getElementById("touchHandler").innerHTML += 
         `<div class="item">
-            <div id="${card.id}" class="card ${card.suit} rank${card.rank}">
+            <div id="${card.id}" class="card cardH ${card.suit} rank${card.rank}">
                 <div class="face"/>
             </div>
         </div>`;

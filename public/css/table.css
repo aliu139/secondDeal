@@ -5,14 +5,14 @@
   https://sourceforge.net/projects/vector-cards/
 */
 
-.card {
+.cardT {
     /* out of screen: translateY viewport height */
     transform: translateY(100vh) scale(1.5);
     box-shadow: 21px 21px 14px -9px rgba(0,0,0,1);
     margin: 0 auto; 
 }
 
-.card.thrown {
+.cardT.thrown {
     transition: all 1s ease-in;
     /* back on screen: translateY to a lower level */
     transform: translateY(10vh) scale(1);

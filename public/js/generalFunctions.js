@@ -4,7 +4,7 @@ function addCardToTable(id, angle, suit, rank) {
     // inject card html to the page body
     document.body.innerHTML += 
         `<div class="path" style="transform: rotate(${angle}deg)">
-            <div id="${id}" class="card ${suit} rank${rank}">
+            <div id="${id}" class="card cardT ${suit} rank${rank}">
                 <div class="face"/>
             </div>
         </div>`;
