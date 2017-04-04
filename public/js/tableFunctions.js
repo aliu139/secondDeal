@@ -11,16 +11,12 @@ function addCardToTable(id, angle, suit, rank) {
 }
 
 function addImageToTable(id, custImg, angle) {
-    // var img = new Image();
-    // img.src = custImg;
-    
     document.body.innerHTML +=
         `<div class="path" style="transform: rotate(${angle}deg)">
             <div id="${id}" class="card cardT hearts rank2">
                 <img width="50" height="50" src="` + custImg+`" >
             </div>
         </div>`;
-
 }
 
 function phoneMoved(angle) {

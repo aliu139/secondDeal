@@ -5,7 +5,7 @@ function addCard() {
     // adds a new card to the end of the deck
     var randomCard = getRandomCard();
     var card = {
-        "id": "card" + idCounter++,
+        "id": idCounter++,
         "isCard": true,
         "suit": randomCard.suit,
         "rank": randomCard.rank
@@ -21,22 +21,26 @@ function addCard() {
 }
 
 function removeCard(id, strength) {
-    // animates a card leaving the deck
-    // after 500 ms removes the element from the DOM and informs the table
     if (cards.length === 0) {
         return;
     }
-    var card = cards[0];
-    cards.splice(0, 1);
+    var card = cards.shift();
     setTimeout(function () {
         document.getElementById(id).parentElement.remove();
         addCard();
-        var sentJSON = { tableId: tableId, isCard: card.isCard, suit: card.suit, rank: card.rank, angle: getCompassDirection(), strength: strength, custImg: card.custImg };
+        var sentJSON = { 
+            tableId: tableId, 
+            isCard: card.isCard, 
+            suit: card.suit, 
+            rank: card.rank, 
+            angle: getCompassDirection(), 
+            strength: strength, 
+            custImg: card.custImg 
+        };
         console.log(sentJSON)
         socket.emit('phone-throw-card', sentJSON);
     }, 500);
 }
-
 
 // SWIPE EVENTS
 
@@ -53,6 +57,7 @@ function touchEnd(x, y, offsetX, offsetY, timeTaken) {
     if (-offsetY < 10) {
         return;
     }
+
     // add class to animate
     var card = cards[0];
     var cardElement = document.getElementById(card.id);

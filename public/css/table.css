@@ -35,7 +35,6 @@
 
 html {
     font-size: 40px; /* this sets the card size */
-    font-family: 'Roboto', sans-serif;
 }
 
 #table {
@@ -69,45 +68,4 @@ html {
 
 #waiting-for-device #placeholder {
   margin: 35px;
-}
-
-
-/* Article Link */
-
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,500');
-
-.banner-article {
-  position: absolute;
-  bottom: 30px;
-  right: 30px; 
-}
-
-.banner-article a {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.banner-article .container-image {
-  background-color: #fff;
-  border-radius: 50%;
-  width: 70px;
-  height: 70px;
-  margin-bottom: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.banner-article img {
-  width: 45px;
-  position: relative;
-  top: 3px;
-}
-
-a {
-  color: #fff;
-  font-size: 14px;
-  text-decoration: none;
-  font-weight: 500;
 }

@@ -1,10 +1,14 @@
 function picChange(evt) {
-    var fileInput = evt.target.files;
+    let fileInput = evt.target.files;
     if (fileInput.length > 0) {
-        var windowURL = window.URL || window.webkitURL;
-        var picURL = windowURL.createObjectURL(fileInput[0]);
+        let windowURL = window.URL || window.webkitURL;
+        let picURL = windowURL.createObjectURL(fileInput[0]);
         drawCard(picURL)
     }
+}
+
+function upload(){
+    $("#customImageUpload").trigger("click");
 }
 
 function toDataUrl(url) {
@@ -13,6 +17,7 @@ function toDataUrl(url) {
         xhr.onload = function () {
             var reader = new FileReader();
             reader.onloadend = function () {
+                console.log(reader)
                 resolve(reader.result);
             }
             reader.readAsDataURL(xhr.response);
@@ -24,7 +29,7 @@ function toDataUrl(url) {
 }
 
 function drawCard(url) {
-    var item = '<div class="item"><div id="cus1" class="card cardH custom"><div class="face" style="background-image: url(' + url + ');"></div></div></div>'
+    var item = '<div class="item"><div id="cus1" class="card cardH custom"><img class="customImg" src="' + url + '"></div></div>'
     $("#touchHandler").prepend(item);
     toDataUrl(url).then(function (res) {
         cards.unshift({
@@ -50,6 +55,7 @@ function getRandomNumber(min, max) {
 function getCompassDirection() {
     var val = ((compassDirection - compassDiff) + 360) % 360;
     var direction = 0;
+    
     if (val >= 0 && val < 180) {
         return Math.min(val, 90);
     } else {

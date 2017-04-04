@@ -32,7 +32,6 @@ let tableSockets = []
 io.on('connection', function(socket){
     // receives a connect message from the card table
     socket.on("table-connect", function (tableId) {
-        // ...  and stores the card table socket
         tableSockets[tableId] = socket;
         socket.tableId = tableId;
     });
@@ -41,7 +40,6 @@ io.on('connection', function(socket){
     socket.on("phone-connect", function (tableId) {
         var tableSocket = tableSockets[tableId];
         if (tableSocket) {
-            // ... informs table that a phone has connected
             tableSocket.emit('phone-connect');
         }
     });
@@ -50,7 +48,6 @@ io.on('connection', function(socket){
     socket.on('phone-move', function (data) {
         var tableSocket = tableSockets[data.tableId];
         if (tableSocket) {
-            // ... and forwards the current angle to the card table
             tableSocket.emit('phone-move', data.angle);
         }
     });
@@ -59,16 +56,12 @@ io.on('connection', function(socket){
     socket.on('phone-throw-card', function (data) {
         var tableSocket = tableSockets[data.tableId];
         if (tableSocket) {
-            // ... and forwards the data to the card table
             tableSocket.emit('phone-throw-card', data);
         }
     });
 
-    // device disconnected
     socket.on('disconnect', function () {
-        // if it's a table
         if(socket.tableId) {
-            // remove table socket
             delete tableSockets[socket.tableId];
         }
     });
