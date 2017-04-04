@@ -14,7 +14,7 @@ function addImageToTable(id, custImg, angle) {
     document.body.innerHTML +=
         `<div class="path" style="transform: rotate(${angle}deg)">
             <div id="${id}" class="card cardT hearts rank2">
-                <img width="50" height="50" src="` + custImg+`" >
+                <img class="customImg" src="` + custImg+`" >
             </div>
         </div>`;
 }

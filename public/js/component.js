@@ -1,4 +1,6 @@
-var compassDirection = 0;
+var isCompassAttached = false;
+var tableId = 0;
+var compassDiff = 0;
 
 window.main = new Vue({
     el: '#main',
@@ -31,8 +33,6 @@ window.main = new Vue({
             }
         },
         clientLoop: function () {
-            let isCompassAttached = false;
-
             // init touch events in phone
             var touchTrack = new TouchTrack();
             touchTrack.init(document.getElementById("touchHandler"), touchStart, touchMove, touchEnd);

@@ -32,8 +32,8 @@ body{
 }
 
 .customImg{
-    max-height: 75vh;
-    width: auto;
+    max-width: 100%;
+    height: auto;
 }
 
 #uploadGroup{
