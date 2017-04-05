@@ -45,8 +45,20 @@ body{
     height: auto;
 }
 
+.custom{
+    max-width: 200px;
+}
+
 #uploadGroup{
     position: block;
+    width: 0;
+    height: 0;
+}
+
+#camera-demo{
+    display: none;
+    width: 100px;
+    height: 100px;
 }
 
 #ico img{
@@ -105,13 +117,13 @@ body{
         text-align: center;
     }
 
-    
     #ico p{
         margin: 0;
         margin-top: 15px;
-        padding-left: 15px;
-        padding-right: 15px;
+        padding-left: 5px;
+        padding-right: 5px;
         font-size: 13px;
+        width: 100vw;
     }
 
     #mainNum{
@@ -120,6 +132,18 @@ body{
         left: 38%;
         width: 20vw;
         margin: 0;
+    }
+
+    #camera-demo{
+        display: none;
+        width: 100px;
+        height: 100px;
+    }
+
+    #camera{
+        position: fixed;
+        top: 60%;
+        left: 38%;
     }
 
     #mainNum label{

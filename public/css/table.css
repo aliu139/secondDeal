@@ -41,7 +41,11 @@ html {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-image: url("http://res.cloudinary.com/dzqowkhxu/image/upload/v1484821182/Ak9p24B_nxadh7.jpg");
+  background: url("http://cdn.displays2go.com/images/enck7236bk-colorlg.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   overflow: hidden;
   /*display: none;*/
 }

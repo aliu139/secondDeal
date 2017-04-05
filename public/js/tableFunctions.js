@@ -13,7 +13,7 @@ function addCardToTable(id, angle, suit, rank) {
 function addImageToTable(id, custImg, angle) {
     document.body.innerHTML +=
         `<div class="path" style="transform: rotate(${angle}deg)">
-            <div id="${id}" class="card cardT hearts rank2">
+            <div id="${id}" class="cardT custom">
                 <img class="customImg" src="` + custImg+`" >
             </div>
         </div>`;
@@ -58,4 +58,5 @@ function phoneConnected() {
     if(el){
         el.remove();
     }
+    $("#qr2").show();
 }

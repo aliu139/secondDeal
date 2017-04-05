@@ -10,10 +10,10 @@
 
 #touchHandler {
   position: absolute;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   overflow: hidden;
-  padding-top: 5.7rem;
+  padding-top: 15vh;
   opacity: 0;
 }
 

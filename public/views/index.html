@@ -36,6 +36,11 @@
         <input class="explodeBox" type="text" v-model="requestedSID" />
       </div>
 
+      <section id="camera" style="display:none">
+          <video autoplay id="camera-demo" poster="http://cirocosta.github.io/qcode-decoder/dist/assets/webcam.png"></video>
+          <button id="scanQR" class="btn">Capture</button>             
+        </section>
+
       <div id="mainButtons">
         <button type="button" class="btn btn-default explodeBox" v-on:click="setUser(true)"> Client </button>
         <button type="button" class="btn btn-default explodeBox" v-on:click="setUser(false)"> Server </button>
@@ -66,12 +71,14 @@
         <div class="section">
           <span>Scan with phone or go to:</span>
           <span id="url"></span>
+          <div id="qr"></div>
         </div>
         <div id="placeholder"></div>
         <div class="section">
           <span>Waiting phone to connect ...</span>
         </div>
       </div>
+      <div id="qr2"></div>
     </div>
   </div>
 
@@ -82,6 +89,9 @@
     crossorigin="anonymous"></script>
   <script src="https://unpkg.com/vue"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
+  <script src="https://rawgit.com/davidshimjs/qrcodejs/master/qrcode.min.js">
+
+  </script>
   <script>
                                                  var socket = io();
   </script>
@@ -99,6 +109,9 @@
   <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
   <script src="https://cdn.rawgit.com/julianshapiro/velocity/master/velocity.min.js"></script>
   <script src="js/move.js"></script>
+
+  <script src="https://rawgit.com/cirocosta/qcode-decoder/master/build/qcode-decoder.min.js"></script>
+  <script src="js/qr.js"></script>
 </body>
 
 </html>

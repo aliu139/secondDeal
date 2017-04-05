@@ -29,7 +29,7 @@ function toDataUrl(url) {
 }
 
 function drawCard(url) {
-    var item = '<div class="item"><div id="cus1" class="card cardH custom"><img class="customImg" src="' + url + '"></div></div>'
+    var item = '<div class="item"><div id="cus1" class="cardH custom"><img class="customImg" src="' + url + '"></div></div>'
     $("#touchHandler").prepend(item);
     toDataUrl(url).then(function (res) {
         cards.unshift({
