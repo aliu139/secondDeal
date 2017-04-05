@@ -60,6 +60,7 @@ body{
 #ico p{
     margin-top: 35px;
     margin-bottom: 35px;
+    width: 40vw;
 }
 
 #collageHeart{
@@ -108,6 +109,9 @@ body{
     #ico p{
         margin: 0;
         margin-top: 15px;
+        padding-left: 15px;
+        padding-right: 15px;
+        font-size: 13px;
     }
 
     #mainNum{
