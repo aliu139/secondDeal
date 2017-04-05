@@ -22,14 +22,22 @@
 <body>
   <div id="main">
     <div id="start">
-      <h1> SecondDeal</h1>
-      <div>
-        <label> Room Number </label>
+      <div id="ico">
+        <img src="img/icon.png"></img>
+        <h1> SecondDeal</h1>
+
+        <p>asdfasdfasdfasdfasdfasdfas</p>
+      </div>
+
+      <div id="mainNum">
+        <label> Room # </label>
         <input class="explodeBox" type="text" v-model="requestedSID" />
       </div>
 
-      <button type="button" class="btn btn-default explodeBox" v-on:click="setUser(true)"> Client </button>
-      <button type="button" class="btn btn-default explodeBox" v-on:click="setUser(false)"> Server </button>
+      <div id="mainButtons">
+        <button type="button" class="btn btn-default explodeBox" v-on:click="setUser(true)"> Client </button>
+        <button type="button" class="btn btn-default explodeBox" v-on:click="setUser(false)"> Server </button>
+      </div>
     </div>
 
     <div id="deck" v-show="client != null && client" v-cloak>

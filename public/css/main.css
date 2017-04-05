@@ -39,3 +39,79 @@ body{
 #uploadGroup{
     position: block;
 }
+
+#ico img{
+    height: 1.5rem;
+}
+
+#ico h1{
+    display: inline-block;
+}
+
+@media screen and (max-width: 700px){
+   #start{
+       height: 100%;
+       width: 100%;
+       margin: 0;
+       background: url(../img/prop.png) no-repeat center center fixed; 
+       -webkit-background-size: cover;
+       -moz-background-size: cover;
+       -o-background-size: cover;
+       background-size: cover;
+    }
+
+    #ico{
+        margin-top: 5vh;
+        text-align: center;
+    }
+
+    #mainNum{
+        position: fixed;
+        top: 45%;
+        left: 38%;
+        width: 20vw;
+    }
+
+    #mainNum label{
+        color: white;
+    }
+
+    #mainNum input{
+        width: 100%;
+        color: white;
+        font-size: 25px;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid white;
+    }
+
+    #mainButtons{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+
+    #mainButtons .btn{
+        width: 50%;
+        float: left;
+        font-size: 25px;
+    }
+
+    #mainButtons .btn:first-child{
+        background: white; /* For browsers that do not support gradients */
+        background: -webkit-linear-gradient(white, lightgreen); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(white, lightgreen); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(white, lightgreen); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(white, lightgreen); /* Standard syntax */
+    }
+
+    #mainButtons .btn:nth-child(2){
+        background: white; /* For browsers that do not support gradients */
+        background: -webkit-linear-gradient(white, lightsalmon); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(white, lightsalmon); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(white, lightsalmon); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(white, lightsalmon); /* Standard syntax */
+    }
+
+    
+}
