@@ -25,6 +25,15 @@ body{
     33px -6px 0px rgba(39, 74, 214, 0.28);
 }
 
+#mainNum{
+    margin-left: 30px;
+}
+
+#mainNum input{
+    border: none;
+
+}
+
 #customImageUpload{
     visibility:hidden;
     height: 0px;
@@ -48,7 +57,37 @@ body{
     display: inline-block;
 }
 
-@media screen and (max-width: 700px){
+#ico p{
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+
+#collageHeart{
+    position: absolute;
+    bottom:0;
+    right:0;
+
+    display: block;
+    width: 45%;
+    float: right;
+}
+
+#mainButtons{
+    display: inline-block;
+    margin-top: 40px;
+}
+
+#mainButtons .btn{
+    float: left;
+    font-size: 25px;
+    border: none;
+}
+
+#mainButtons .btn:first-child{
+    margin-right: 80px;
+}
+
+@media screen and (max-width: 400px){
    #start{
        height: 100%;
        width: 100%;
@@ -65,11 +104,18 @@ body{
         text-align: center;
     }
 
+    
+    #ico p{
+        margin: 0;
+        margin-top: 15px;
+    }
+
     #mainNum{
         position: fixed;
         top: 45%;
         left: 38%;
         width: 20vw;
+        margin: 0;
     }
 
     #mainNum label{
@@ -103,6 +149,8 @@ body{
         background: -o-linear-gradient(white, lightgreen); /* For Opera 11.1 to 12.0 */
         background: -moz-linear-gradient(white, lightgreen); /* For Firefox 3.6 to 15 */
         background: linear-gradient(white, lightgreen); /* Standard syntax */
+
+        margin-right: 0;
     }
 
     #mainButtons .btn:nth-child(2){
@@ -112,6 +160,7 @@ body{
         background: -moz-linear-gradient(white, lightsalmon); /* For Firefox 3.6 to 15 */
         background: linear-gradient(white, lightsalmon); /* Standard syntax */
     }
-
-    
+    #collageHeart{
+        display: none;
+    }
 }
